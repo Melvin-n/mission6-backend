@@ -33,8 +33,8 @@ app.get('/', (req: Request, res: Response): void => {
     res.send('Mission 6 API')
 })
 
-app.get('/api/products', (req: Request, res: Response): void => {
-    db.collection('dummy').find({}).toArray((err: any, result: any) => {
+app.get('/api/products', async (req: Request, res: Response): Promise<void> => {
+    await db.collection('dummy').find({}).toArray((err: any, result: any) => {
         if (err) throw err
         res.send(result)
     })
