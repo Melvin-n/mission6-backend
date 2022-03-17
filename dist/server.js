@@ -20,7 +20,7 @@ mongoose.connect(mongo_url)
     .catch((err) => console.log({ error: err }));
 const db = mongoose.connection;
 app.get('/', (req, res) => {
-    res.send('Hello world!');
+    res.send('Mission 6 API');
 });
 app.get('/api/products', (req, res) => {
     db.collection('dummy').find({}).toArray((err, result) => {
@@ -28,6 +28,9 @@ app.get('/api/products', (req, res) => {
             throw err;
         res.send(result);
     });
+});
+app.get('/test', (req, res) => {
+    res.send('hola ');
 });
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
