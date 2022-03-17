@@ -5,9 +5,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
-const port = 3001;
+const port = 4000;
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config();
+//middlewares
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: true }));
+app.use(cors());
 // define mongo url and connect to DB 
 const mongo_url = `mongodb+srv://${process.env.MONGO_USER_NAME}:${process.env.MONGO_USER_PASSWORD}@cluster0.mzjzk.mongodb.net/mission6?retryWrites=true&w=majority`;
 mongoose.connect(mongo_url)
@@ -17,7 +22,13 @@ const db = mongoose.connection;
 app.get('/', (req, res) => {
     res.send('Hello world!');
 });
-db.collection('dummy').insertOne({ house: 'mine' });
+app.get('/api/products', (req, res) => {
+    db.collection('dummy').find({}).toArray((err, result) => {
+        if (err)
+            throw err;
+        res.send(result);
+    });
+});
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 });
