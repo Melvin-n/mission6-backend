@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
     res.send('Mission 6 API');
 });
 app.get('/api/products', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    yield db.collection('dummy').find({}).toArray((err, result) => {
+    db.collection('dummy').find({}).toArray((err, result) => {
         if (err)
             throw err;
         return res.send(result);
