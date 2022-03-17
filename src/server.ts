@@ -41,7 +41,7 @@ app.get('/api/products', (req: Request, res: Response): void => {
 })
 
 app.get('/test', (req, res) => {
-    res.send('hola')
+    res.send('hola ')
 })
 
 app.listen(port, () : void => {
