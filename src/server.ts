@@ -36,7 +36,7 @@ app.get('/', (req: Request, res: Response): void => {
 app.get('/api/products', (req: Request, res: Response): void => {
     db.collection('dummy').find({}).toArray((err: any, result: any) => {
         if (err) throw err
-        return res.send(result)
+        res.send(result)
     })
     
 })
