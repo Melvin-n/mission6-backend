@@ -36,9 +36,9 @@ app.get('/', (req: Request, res: Response): void => {
 app.get('/api/products', async (req: Request, res: Response): Promise<void> => {
     await db.collection('dummy').find({}).toArray((err: any, result: any) => {
         if (err) throw err
-        return result
+        return res.send(result)
     })
-    .then((result: Product) => res.send(result))
+    
 })
 
 app.get('/test', (req, res) => {

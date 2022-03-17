@@ -35,9 +35,8 @@ app.get('/api/products', (req, res) => __awaiter(void 0, void 0, void 0, functio
     yield db.collection('dummy').find({}).toArray((err, result) => {
         if (err)
             throw err;
-        return result;
-    })
-        .then((result) => res.send(result));
+        return res.send(result);
+    });
 }));
 app.get('/test', (req, res) => {
     res.send('hola ');
