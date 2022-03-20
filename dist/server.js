@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -28,16 +19,90 @@ mongoose.connect(mongo_url)
     .then((res) => console.log('Connected to DB'))
     .catch((err) => console.log({ error: err }));
 const db = mongoose.connection;
+const propertiesToAdd = [
+    {
+        address: "471 Okahu Street Mount Eden, 1023",
+        price_per_week: 850,
+        subtitle: "Love working from home",
+        bedrooms: 3,
+        bathrooms: 1,
+        image: './images/houses/house1.png',
+        fullyFenced: false,
+        petFriendly: true,
+        facingDirection: "north",
+        driveway: true,
+        parking: 2,
+    },
+    {
+        address: "277 Broadway, Newmarket, 1023",
+        price_per_week: 1250,
+        subtitle: "Broadway, baby.",
+        bedrooms: 1,
+        bathrooms: 4,
+        image: './images/houses/house2.png',
+        fullyFenced: false,
+        petFriendly: false,
+        facingDirection: "south",
+        driveway: false,
+        parking: 1,
+    },
+    {
+        address: "42 Seacliffe Road, Hillsborough, 1042",
+        price_per_week: 999,
+        subtitle: "Beautiful beach view!",
+        bedrooms: 5,
+        bathrooms: 2,
+        image: './images/houses/house3.png',
+        fullyFenced: true,
+        petFriendly: true,
+        facingDirection: "north",
+        driveway: true,
+        parking: 2,
+    },
+    {
+        address: "1/118 Asquith Avenue, Mount Albert, 1025",
+        price_per_week: 1050,
+        subtitle: "Very nice",
+        bedrooms: 5,
+        bathrooms: 2,
+        image: './images/houses/house4.png',
+        fullyFenced: false,
+        petFriendly: true,
+        facingDirection: "east",
+        driveway: false,
+        parking: 1,
+    },
+    {
+        address: "73 Morningside Drive, Mount Albert, 1025",
+        price_per_week: 780,
+        subtitle: "Extremely chill",
+        bedrooms: 2,
+        bathrooms: 2,
+        image: './images/houses/house5.png',
+        fullyFenced: false,
+        petFriendly: true,
+        facingDirection: "north",
+        driveway: false,
+        parking: 1,
+    },
+];
 app.get('/', (req, res) => {
     res.send('Mission 6 API');
 });
-app.get('/api/products', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get('/api/products', (req, res) => {
     db.collection('dummy').find({}).toArray((err, result) => {
         if (err)
             throw err;
-        return res.send(result);
+        res.send(result);
     });
-}));
+});
+app.get('/api/properties', (req, res) => {
+    db.collection('properties').find({}).toArray((err, result) => {
+        if (err)
+            throw err;
+        res.send(result);
+    });
+});
 app.get('/test', (req, res) => {
     res.send('hola ');
 });
