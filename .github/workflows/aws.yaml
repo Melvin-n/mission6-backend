@@ -36,7 +36,12 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
-
+      - name: Create env file
+        run: |
+          touch .env
+          echo MONGO_USER_PASSWORD=${{ secrets.MONGO_USER_PASSWORD }}>> .env
+          echo MONGO_USER_NAME=${{ secrets.MONGO_USER_NAME }} >> .env
+          cat .env
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@aaf69d68aa3fb14c1d5a6be9ac61fe15b48453a2
