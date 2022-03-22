@@ -22,7 +22,7 @@ const db = mongoose.connection;
 const propertiesToAdd = [
     {
         address: "471 Okahu Street Mount Eden, 1023",
-        price_per_week: 850,
+        pricePerWeek: 850,
         subtitle: "Love working from home",
         description: 'Home to live in',
         bedrooms: 3,
@@ -43,7 +43,7 @@ const propertiesToAdd = [
     },
     {
         address: "277 Broadway, Newmarket, 1023",
-        price_per_week: 1250,
+        pricePerWeek: 1250,
         subtitle: "Broadway, baby.",
         description: 'Home to live in',
         bedrooms: 1,
@@ -64,7 +64,7 @@ const propertiesToAdd = [
     },
     {
         address: "42 Seacliffe Road, Hillsborough, 1042",
-        price_per_week: 999,
+        pricePerWeek: 999,
         subtitle: "Beautiful beach view!",
         description: 'Home to live in',
         bedrooms: 5,
@@ -85,7 +85,7 @@ const propertiesToAdd = [
     },
     {
         address: "1/118 Asquith Avenue, Mount Albert, 1025",
-        price_per_week: 1050,
+        pricePerWeek: 1050,
         subtitle: "Very nice",
         description: 'Home to live in',
         bedrooms: 5,
@@ -106,7 +106,7 @@ const propertiesToAdd = [
     },
     {
         address: "73 Morningside Drive, Mount Albert, 1025",
-        price_per_week: 780,
+        pricePerWeek: 780,
         subtitle: "Extremely chill",
         description: 'Home to live in',
         bedrooms: 2,
@@ -124,11 +124,11 @@ const propertiesToAdd = [
         distanceFromPark: 300,
         distanceFromGrocery: 900,
         distanceFromSchool: 300,
-    },
+    }
 ];
-db.collection('properties').insert(propertiesToAdd)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+// db.collection('properties').insert(propertiesToAdd)
+// .then((res: unknown) => console.log(res))
+// .catch((err: unknown) => console.log(err))
 app.get('/', (req, res) => {
     res.send('Mission 6 API');
 });
@@ -136,6 +136,16 @@ app.get('/api/products', (req, res) => {
     db.collection('dummy').find({}).toArray((err, result) => {
         if (err)
             throw err;
+        res.send(result);
+    });
+});
+app.post('/api/properties/query', (req, res) => {
+    const query = req.body.query;
+    console.log(query);
+    db.collection('properties').find(query).toArray((err, result) => {
+        if (err)
+            throw err;
+        console.log(result);
         res.send(result);
     });
 });
