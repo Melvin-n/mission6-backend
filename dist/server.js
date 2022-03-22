@@ -36,7 +36,10 @@ const propertiesToAdd = [
         parking: 2,
         propertyManager: 'Darrel Steward',
         propertyManagerEmail: 'darrelsteward@aucklandprop.co.nz',
-        propertyManagerPhone: '0210815959'
+        propertyManagerPhone: '0210815959',
+        distanceFromPark: 1000,
+        distanceFromGrocery: 3400,
+        distanceFromSchool: 400,
     },
     {
         address: "277 Broadway, Newmarket, 1023",
@@ -54,7 +57,10 @@ const propertiesToAdd = [
         parking: 1,
         propertyManager: 'Darrel Steward',
         propertyManagerEmail: 'darrelsteward@aucklandprop.co.nz',
-        propertyManagerPhone: '0210815959'
+        propertyManagerPhone: '0210815959',
+        distanceFromPark: 300,
+        distanceFromGrocery: 200,
+        distanceFromSchool: 900,
     },
     {
         address: "42 Seacliffe Road, Hillsborough, 1042",
@@ -72,7 +78,10 @@ const propertiesToAdd = [
         parking: 2,
         propertyManager: 'Darrel Steward',
         propertyManagerEmail: 'darrelsteward@aucklandprop.co.nz',
-        propertyManagerPhone: '0210815959'
+        propertyManagerPhone: '0210815959',
+        distanceFromPark: 1500,
+        distanceFromGrocery: 6000,
+        distanceFromSchool: 8000,
     },
     {
         address: "1/118 Asquith Avenue, Mount Albert, 1025",
@@ -90,7 +99,10 @@ const propertiesToAdd = [
         parking: 1,
         propertyManager: 'Darrel Steward',
         propertyManagerEmail: 'darrelsteward@aucklandprop.co.nz',
-        propertyManagerPhone: '0210815959'
+        propertyManagerPhone: '0210815959',
+        distanceFromPark: 2000,
+        distanceFromGrocery: 1200,
+        distanceFromSchool: 5500,
     },
     {
         address: "73 Morningside Drive, Mount Albert, 1025",
@@ -108,7 +120,10 @@ const propertiesToAdd = [
         parking: 1,
         propertyManager: 'Darrel Steward',
         propertyManagerEmail: 'darrelsteward@aucklandprop.co.nz',
-        propertyManagerPhone: '0210815959'
+        propertyManagerPhone: '0210815959',
+        distanceFromPark: 300,
+        distanceFromGrocery: 900,
+        distanceFromSchool: 300,
     },
 ];
 db.collection('properties').insert(propertiesToAdd)
