@@ -144,7 +144,7 @@ app.post('/api/properties/query', (req, res) => {
     console.log(query);
     db.collection('properties').find(query).toArray((err, result) => {
         if (err)
-            throw err;
+            console.log(err);
         console.log(result);
         res.send(result);
     });

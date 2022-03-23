@@ -50,7 +50,6 @@ interface Property {
     distanceFromPark: number
     distanceFromGrocery: number
     distanceFromSchool: number
-
 }
 
 const propertiesToAdd: Property[] = [
@@ -182,7 +181,7 @@ app.post('/api/properties/query',  (req: Request, res: Response): void => {
     const query = req.body.query
     console.log(query)
     db.collection('properties').find(query).toArray((err: unknown, result: unknown) => {
-        if (err) throw err
+        if (err) console.log(err)
         console.log(result)
         res.send(result)
     })
