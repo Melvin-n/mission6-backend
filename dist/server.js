@@ -156,6 +156,22 @@ app.get('/api/properties', (req, res) => {
         res.send(result);
     });
 });
+app.post('/api/booking', (req, res) => {
+    const booking = req.body.query;
+    console.log(booking);
+    db.collection('bookings').insertOne(booking)
+        // viewDate, viewTime, firstName email and sizeViewGroup
+        .then((result) => {
+        res.send({
+            "name": booking.firstName,
+            "email": booking.email,
+            "viewDate": booking.viewDate,
+            "viewTime": booking.viewTime,
+            "sizeViewGroup": booking.sizeViewGroup
+        });
+    })
+        .catch((err) => console.log(err));
+});
 app.get('/test', (req, res) => {
     res.send('hola ');
 });

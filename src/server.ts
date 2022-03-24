@@ -194,6 +194,24 @@ app.get('/api/properties', (req: Request, res: Response): void => {
     })
 })
 
+app.post('/api/booking', (req: Request, res: Response): void => {
+    const booking = req.body.query
+    console.log(booking)
+    db.collection('bookings').insertOne(booking)
+    // viewDate, viewTime, firstName email and sizeViewGroup
+    .then((result:any) => {
+        res.send({  
+            "name": booking.firstName,
+            "email": booking.email,
+            "viewDate": booking.viewDate,
+            "viewTime": booking.viewTime,
+            "sizeViewGroup": booking.sizeViewGroup
+            })
+    })
+    .catch((err: any) => console.log(err))
+
+})
+
 app.get('/test', (req, res) => {
     res.send('hola ')
 })
